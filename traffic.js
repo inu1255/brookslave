@@ -4,7 +4,6 @@ const utils = require('./utils');
 class Traffic {
     constructor() {
         this.onchange = function(port, u, d) {};
-        this.cnt = 0;
     }
     refresh() {
         return new Promise((resolve, reject) => {
@@ -34,12 +33,12 @@ class Traffic {
                         bytes = +bytes;
                         let [ptype, port] = pp.split(':');
                         ports[port] = ports[port] || 0;
-                        ports[port] += bytes + this.cnt++ * 5e5;
+                        ports[port] += bytes;
                         // total += bytes + this.cnt + 5e5;
                         this.ports[port] = true;
                     }
-				}
-				this.cur = cur;
+                }
+                this.cur = cur;
                 // console.log(`总流量${utils.b2m(total)}`);
                 resolve();
             });
