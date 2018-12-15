@@ -39,8 +39,8 @@ class BrookSlave {
                     proc.kill('SIGINT');
                     return pms;
                 };
-                proc.stdout.on('data', console.log);
-                proc.stderr.on('data', console.log);
+                proc.stdout.on('data', x => console.log(x + ''));
+                proc.stderr.on('data', x => console.error(x + ''));
             }
         }
     }
