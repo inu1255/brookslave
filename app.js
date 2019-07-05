@@ -48,8 +48,8 @@ class BrookSlave {
                     proc.kill('SIGINT');
                     return pms;
                 };
-                proc.stdout.on('data', x => console.log(x + ''));
-                proc.stderr.on('data', x => console.error(x + ''));
+                // proc.stdout.on('data', x => console.log(x + ''));
+                // proc.stderr.on('data', x => console.error(x + ''));
             }
         }
     }
@@ -62,6 +62,7 @@ async function main() {
         try {
             await slave.loop();
         } catch (error) {
+            slave.init();
             console.log(error);
         }
         await utils.sleep(5e3);
