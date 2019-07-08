@@ -25,11 +25,9 @@ class BrookSlave {
         if (data.no != 200) throw data.msg;
     }
     async loop() {
-        console.log(new Date().toLocaleString());
         let url = 'https://ssr.inu1255.cn/api/node/userlist?token=' + this.token;
-        var { data } = await axios.get(url);
+        var { data } = await axios.get(url, {timeout: 5e3});
         let args = ['servers'];
-        console.log(new Date().toLocaleString(),data.data.length);
         for (let item of data.data) {
             this.traffic.add(item.port);
             args.push('-l', `:${item.port} ${item.passwd}`);
