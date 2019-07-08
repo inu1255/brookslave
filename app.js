@@ -42,7 +42,7 @@ class BrookSlave {
                 await this.prevExit();
             }
             if (args.length > 1) {
-                let proc = child_process.spawn('brook', args);
+                let proc = child_process.spawn(__dirname+'/brook', args);
                 let pms = new Promise((resolve, reject) => {
                     proc.on('exit', resolve);
                 });
