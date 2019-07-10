@@ -72,9 +72,17 @@ class Traffic {
         if (this.cur.output[port] == null)
             await utils.exec(`iptables -A OUTPUT -p tcp --sport ${port}`);
     }
+    show() {
+        for(var port in this.cur.input){
+            var u = this.cur.input[port];
+            var d = this.cur.output[port] || 0;
+            console.log(port, utils.b2m(u), utils.b2m(d));
+        }
+    }
     async run(limit, ms) {
         ms = ms || 5e3;
         await this.refresh();
+        this.show();
         this.prev = JSON.parse(JSON.stringify(this.cur));
         while (true) {
             await utils.sleep(ms);
