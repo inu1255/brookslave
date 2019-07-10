@@ -54,6 +54,7 @@ class Traffic {
             d -= pd;
             if (u + d > limit) {
                 try {
+                    console.log(port, utils.b2m(u+d));
                     await this.onchange(port, u, d);
                     this.prev.input[port] = this.cur.input[port];
                     this.prev.output[port] = this.cur.output[port];
