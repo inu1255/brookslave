@@ -29,6 +29,7 @@ class Traffic {
                             ss.splice(2, 0, '');
                         }
                         let [pkts, bytes, target, prot, opt, input, output, src, dst, _, pp] = ss;
+                        if(!pp) continue;
                         pkts = +pkts;
                         bytes = +bytes;
                         let [ptype, port] = pp.split(':');
