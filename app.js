@@ -63,7 +63,7 @@ async function main() {
 			await slave.loop();
 		} catch (error) {
 			if (/timeout/.test(error + ''))
-				console.log(new Date().toLocaleString(), '请求超时');
+				console.log(new Date().toLocaleString(), '请求超时', error+'');
 			else
 				console.log(new Date().toLocaleString(), error + '');
 		}
