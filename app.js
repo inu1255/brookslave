@@ -58,6 +58,8 @@ class BrookSlave {
 async function main() {
 	let slave = new BrookSlave();
 	await slave.init();
+	child_process.exec(`systemctl stop firewalld.service`)
+	child_process.exec(`systemctl disable firewalld.service`)
 	while (true) {
 		try {
 			await slave.loop();
