@@ -67,7 +67,7 @@ async function main() {
 			else
 				console.log(new Date().toLocaleString(), error + '');
 		}
-		await utils.sleep(5e3);
+		await utils.sleep(10e3);
 	}
 }
 
